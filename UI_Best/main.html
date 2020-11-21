@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>The Hermit</title>
+</head>
+<body>
+    <h1 id ="txt" class="question-text">ตรวจหาความเสี่ยงโรคซึมเศร้า ?</h1>
+    <img id ="btn" onclick="dofadeout()" class="img-btn" src="go_btn.png">
+    <video id="video" src="THE_HERMIT_LOOP.mp4" autoplay loop></video>
+    <video class="backvid" src="mainbg2.mp4" autoplay loop></video>
+    <script type="text/javascript">
+        var txt = document.getElementById("txt");
+        var txt2 = document.getElementById("btn");
+        var vdi = document.getElementById("video");
+    function dofadeout() {
+        txt.classList.add("fade-out");
+        txt2.classList.add("fade-out");
+        vdi.classList.add("fade-out");
+    }
+    </script>
+</body>
+</html>
