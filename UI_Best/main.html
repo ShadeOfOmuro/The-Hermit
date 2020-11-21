@@ -11,14 +11,25 @@
     <img id ="btn" onclick="dofadeout()" class="img-btn" src="go_btn.png">
     <video id="video" src="THE_HERMIT_LOOP.mp4" autoplay loop></video>
     <video class="backvid" src="mainbg2.mp4" autoplay loop></video>
+    <img src="info.png" class="info-img" id="info-img" onclick="gotoform()">
     <script type="text/javascript">
         var txt = document.getElementById("txt");
         var txt2 = document.getElementById("btn");
         var vdi = document.getElementById("video");
+        var intervalUID;
     function dofadeout() {
         txt.classList.add("fade-out");
         txt2.classList.add("fade-out");
         vdi.classList.add("fade-out");
+        toggleinfo();
+    }
+    function toggleinfo() {
+        var infobox = document.getElementById("info-img");
+        infobox.style.display = "block";
+
+    }
+    function gotoform() {
+        location.replace("example.com");
     }
     </script>
 </body>
