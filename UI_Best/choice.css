@@ -9,3 +9,58 @@ video {
     height: auto;
     z-index: 1;
 }
+.question-container {
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    top: 0%;
+    right: 5%;
+    z-index: 3;
+    animation: animate1 1s forwards;
+}
+.answer-container {
+    position: absolute;
+    width: 20%;
+    height: auto;
+    top: 30%;
+    right: 40%;
+    z-index: 3;
+    animation: animate1-half 2s forwards;
+}
+.slide-down{
+    top: 61%;
+}
+.slide-down-again{
+    top: 43%;
+}
+.slide-down-again-again{
+    top: 57%;
+}
+.slide-down-again-again-again{
+    top: 40%;
+}
+.slide-left{
+    right: 40%;
+}
+.slide-right{
+    right: -10%;
+}
+@keyframes animate1 {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes animate1-half {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
