@@ -1,63 +1,62 @@
-
+#!/usr/local/bin/python
 from flask import *
-# import read_mindwave_mobile
-import matplotlib.pyplot as plt
+import read_mindwave_mobile
 import threading
 app = Flask(__name__)
 
-# class datapackMW : 
-#     Delta = []
-#     Theta = []
-#     LowAlpha = []
-#     HighAlpha = []
-#     LowBeta = []
-#     HighBeta = []
-#     LowGamma = []
-#     MedGamma = []
-#     AttentionLevel = []
-#     PoorSignalLevel = []
-#     Unknowdatapoint = []
-#     MeditationLevel = []
+class datapackMW : 
+    Delta = []
+    Theta = []
+    LowAlpha = []
+    HighAlpha = []
+    LowBeta = []
+    HighBeta = []
+    LowGamma = []
+    MedGamma = []
+    AttentionLevel = []
+    PoorSignalLevel = []
+    Unknowdatapoint = []
+    MeditationLevel = []
 
-# def force_stop_test() :
-#     read_mindwave_mobile.datapack.kill_code = True
-#     datapackMW.Delta += read_mindwave_mobile.Delta
-#     datapackMW.Theta += read_mindwave_mobile.Theta
-#     datapackMW.LowAlpha += read_mindwave_mobile.LowAlpha
-#     datapackMW.HighAlpha += read_mindwave_mobile.HighAlpha
-#     datapackMW.LowBeta += read_mindwave_mobile.LowBeta
-#     datapackMW.HighBeta += read_mindwave_mobile.HighBeta
-#     datapackMW.LowGamma += read_mindwave_mobile.LowGamma
-#     datapackMW.MedGamma += read_mindwave_mobile.MedGamma
-#     datapackMW.AttentionLevel += read_mindwave_mobile.AttentionLevel
-#     datapackMW.MeditationLevel += read_mindwave_mobile.MeditationLevel
-#     print("END")
-
-
-# def render_measure() :
-#     t = threading.Thread(target= read_mindwave_mobile.start_measure)
-#     t.run()
-#     return render_template("measure.html")
+def force_stop_test() :
+    read_mindwave_mobile.datapack.kill_code = True
+    datapackMW.Delta += read_mindwave_mobile.Delta
+    datapackMW.Theta += read_mindwave_mobile.Theta
+    datapackMW.LowAlpha += read_mindwave_mobile.LowAlpha
+    datapackMW.HighAlpha += read_mindwave_mobile.HighAlpha
+    datapackMW.LowBeta += read_mindwave_mobile.LowBeta
+    datapackMW.HighBeta += read_mindwave_mobile.HighBeta
+    datapackMW.LowGamma += read_mindwave_mobile.LowGamma
+    datapackMW.MedGamma += read_mindwave_mobile.MedGamma
+    datapackMW.AttentionLevel += read_mindwave_mobile.AttentionLevel
+    datapackMW.MeditationLevel += read_mindwave_mobile.MeditationLevel
+    print("END")
 
 
-# def render_end() :
-#     force_stop_test()
-#     plt.plot(datapackMW.Delta)
-#     plt.plot(datapackMW.Theta)
-#     plt.plot(datapackMW.LowAlpha)
-#     plt.plot(datapackMW.HighAlpha)
-#     plt.plot(datapackMW.LowBeta)
-#     plt.plot(datapackMW.HighBeta)
-#     plt.plot(datapackMW.LowGamma)
-#     plt.plot(datapackMW.MedGamma)
-#     plt.plot(datapackMW.AttentionLevel)
-#     plt.plot(datapackMW.MeditationLevel)
-#     plt.show()
-#     return Response(str())
+def render_measure() :
+    t = threading.Thread(target= read_mindwave_mobile.start_measure)
+    t.run()
+    return render_template("measure.html")
+
+
+def render_end() :
+    force_stop_test()
+    # plt.plot(datapackMW.Delta)
+    # plt.plot(datapackMW.Theta)
+    # plt.plot(datapackMW.LowAlpha)
+    # plt.plot(datapackMW.HighAlpha)
+    # plt.plot(datapackMW.LowBeta)
+    # plt.plot(datapackMW.HighBeta)
+    # plt.plot(datapackMW.LowGamma)
+    # plt.plot(datapackMW.MedGamma)
+    # plt.plot(datapackMW.AttentionLevel)
+    # plt.plot(datapackMW.MeditationLevel)
+    # plt.show()
+    return Response(str())
 
 
 class backpack :
-    question = ["Nan","ช่วงนี้ฉันรู้สึกเบื่อไม่สนใจอยากทำอะไร" , "ช่วงนี้ฉันรู้สึกไม่สบายใจ ซึมเศร้า ท้อแท้" , "ช่วงนี้ฉันหลับยาก หรือหลับ ๆ ตื่น ๆ หรือ หลับมากเกินไป"  , "ช่วงนี้ฉันรู้สึกเหนื่อยง่ายหรือไม่ค่อยมีแรง"  , "ช่วงนี้ฉันรู้สึกเบื่ออาหาร หรือกินมากเกินไป"  , "ช่วงนี้ฉันรู้สึกว่าตนเองล้มเหลว หรือ ทำให้ตนเองหรือครอบครัวผิดหวัง"  , "ช่วงนี้ฉันไม่ค่อยมีสมาธิในการทำอะไร"  , "ช่วงนี้ฉันพูดช้าลง ทำอะไรช้าลง หรือกระสับกระส่ายกว่าที่เคยเป็น"  , "ช่วงนี้ฉันคิดทำร้ายตนเอง หรือ คิดว่าหากตายไปได้ก็คงจะดี"]
+    question = ["0", "1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10"]
     curr_question = 1
     score = 0
     Name = ""
@@ -105,7 +104,8 @@ def redirect_to_quiz() :
         return redirect("/choicequiz")
 @app.route("/mindwave")
 def render_mindwave() :
-    #dostuff()
+    t = threading.Thread(target= read_mindwave_mobile.start_measure)
+    t.run()
     return render_template("mindwave.html")
 
 @app.route("/full_result")
