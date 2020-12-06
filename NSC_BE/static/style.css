@@ -12,21 +12,37 @@ body , html {
   position : fixed;
   top: 50%;
   right: 50%;
-  height: 8%;
-  width: 13%;
+  height: 12%;
+  width: 19.5%;
   border: none;
-  background-color: rgba(255, 0, 0, 0.0);
+  background-color: rgba(0, 0, 0, 0.1);
   color: #FFFFFF;
   border: 3px solid #66FCF1;
-  transform: translate(44% , 370%);
-  font-size: 20px;
+  transform: translate(44% , 100%);
+  font-size: 30px;
   font-family: 'Prompt', sans-serif;
+
+}
+.start-btn:active {
+  position : fixed;
+  top: 50%;
+  right: 50%;
+  height: 12%;
+  width: 19.5%;
+  border: none;
+  background-color: #000;
+  color: #FFFFFF;
+  border: 3px solid #66FCF1;
+  transform: translate(44% , 100%);
+  font-size: 30px;
+  font-family: 'Prompt', sans-serif;
+  opacity: .4;
 
 }
 .start-btn:hover {
   background-color: #66FCF1;
   color: #000000;
-  transition: 500ms;
+  transition: 700ms;
 }
 h1 {
   position : absolute;
@@ -35,16 +51,68 @@ h1 {
   position: fixed;
   right: 50%;
   top: 50%;
-  font-size: 90px;
+  font-size: 120px;
   transform: translate(50% , -200%);
 
 }
-p{
+.p-main{
 color: #FFFFFF;
 position: absolute;
 font-family: 'Prompt', sans-serif;
-font-size: 25px;
+font-size: 35px;
 right: 50%;
 top: 50%;
-transform: translate(50%,-90%);
+transform: translate(50%,-150%);
+}
+.slide-top {
+  transform: translate(50%,-400%);
+}
+.reduce-font{
+  font-size: 90px;
+}
+.scroll-text-wrapper {
+  color: #FFFFFF;
+  font-family: 'Prompt', sans-serif;
+  width: 80%;
+  position: absolute;
+  height: 55%;
+  background-color: rgba(0,0,0,0.1);
+  border: none;
+  border: 3px solid #66FCF1;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50% , -57%);
+  overflow:scroll;
+}
+div p {
+  margin-left : 10px;
+  width: 98%;
+  position: relative;
+  top:50px;
+  left: 10px;
+  font-size: 32px;
+
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  #66FCF1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:  #66fcf2b7;
+}
+::-webkit-scrollbar-corner {
+  background:   rgba(0,0,0,0);
+}
+.slide-down {
+  transform: translate(50%,250%);
 }
