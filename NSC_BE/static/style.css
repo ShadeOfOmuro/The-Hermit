@@ -116,3 +116,14 @@ div p {
 .slide-down {
   transform: translate(50%,250%);
 }
+a {
+  color: #FFFFFF;
+
+}
+a:hover {
+  color: #66FCF1;
+  transition: 1000ms;
+}
+.alerty {
+  color: #f93a63;
+}

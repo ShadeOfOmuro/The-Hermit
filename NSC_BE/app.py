@@ -104,9 +104,12 @@ def redirect_to_quiz() :
         return redirect("/choicequiz")
 @app.route("/mindwave")
 def render_mindwave() :
+    return render_template("mindwave.html")
+@app.route("/mindwave_test")
+def render_mindwave_test() :
     t = threading.Thread(target= read_mindwave_mobile.start_measure)
     t.run()
-    return render_template("mindwave.html")
+    return render_template("mindwave_test.html")
 
 @app.route("/full_result")
 def render_test_result() :
