@@ -1,0 +1,23 @@
+
+.fade-out {
+    opacity: 0;
+    transition: 2000ms;  
+}
+.fade-in {
+    opacity: 1;
+    transition: 2000ms;  
+}
+p {
+    position : absolute;
+    color: #FFF;
+    font-family: 'Prompt', sans-serif;
+    font-size: 30px;
+    top: 40%;
+}
+.text-wrapper {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    top: 40%;
+}

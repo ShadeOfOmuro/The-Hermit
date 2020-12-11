@@ -1,36 +1,163 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>index</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+body , html {
+  font-family: 'Prompt', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+#particles-js {
+  height: 100%;
+  background-color: #1F2833; 
+}
+form {
+  font-size: 20px;
+  position: absolute;
+  height: 100%;
+  width: auto;
+}
+h1 {
+    position: absolute;
+    color: #66FCF1;
+    font-size: 50px;
+    padding-left: 2%;
+}
+button {
+  font-family: 'Prompt', sans-serif;
+  right: -30%;
+  top: -10%;
+  position: relative;
+  transform: translate(300%,500%);
+  width:300%;
+  height: 8%;
+}
+.btn-1:hover {
+  background-color: aquamarine;
+  border: none;
+  
+  transform: translate(10% , 500%);
+  color: #000;
+  transition: 1000ms;
+}
+.btn-1 {
+  
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid aquamarine;
+  font-size: larger;
+  transform: translate(10% , 500%);
+  color: #FFF;
 
-<!-- jQuery and JS bundle w/ Popper.js -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <title></title>
+}
+.btn-2:hover {
+  background-color: #adff2f;
+  border: none;
+  
+  transform: translate(10% , 500%);
+  color: #000;
+  transition: 1000ms;
+}
+.btn-2 {
+  
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #adff2f;
+  font-size: larger;
+  transform: translate(10% , 500%);
+  color: #FFF;
+}
+.btn-3:hover {
+  background-color: yellow;
+  border: none;
+  
+  transform: translate(10% , 500%);
+  color: #000;
+  transition: 1000ms;
+}
+.btn-3 {
+  
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid yellow;
+  font-size: larger;
+  transform: translate(10% , 500%);
+  color: #FFF;
+}
+.btn-4:hover {
+  background-color: orange;
+  border: none;
+  
+  transform: translate(10% , 500%);
+  color: #000;
+  transition: 1000ms;
+}
+.btn-4 {
+  
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid orange;
+  font-size: larger;
+  transform: translate(10% , 500%);
+  color: #FFF;
+}
+.btn-5:hover {
+  background-color: #f93a63;
+  border: none;
+  
+  transform: translate(10% , 500%);
+  color: #FFF;
+  transition: 1000ms;
+}
+.btn-5 {
+  
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #f93a63;
+  font-size: larger;
+  transform: translate(10% , 500%);
+  color: #FFF;
+}
+ </style>
 </head>
 <body>
-    <div class="container">
-        <form method="POST" action="/quizhandler">
-            {{ csrf_token }}
-        </br>
-        <h1>{{ question }}</h1>
-        <button class="btn btn-primary" type="submit" name="score" value="5" >Most</button>
-    </br>
+  {% if question == "1" %}
+  <h1>ช่วงนี้เบื่อ ทำอะไร ๆ ก็ไม่เพลิดเพลิน</h1>
+  {% elif question == "2" %}
+  <h1> ช่วงนี้ไม่สบายใจ ซึมเศร้า หรือท้อแท้</h1>
+  {% elif question == "3" %}
+  <h1>ช่วงนี้หลับยาก หรือหลับ ๆ ตื่น ๆ หรือหลับมากไป</h1>
+  {% elif question == "4" %}
+  <h1> ช่วงนี้เหนื่อยง่าย หรือไม่ค่อยมีแรง</h1>
+  {% elif question == "5" %}
+  <h1> ช่วงนี้เบื่ออาหาร หรือกินมากเกินไป</h1>
+  {% elif question == "6" %}
+  <h1>ช่วงนี้รู้สึกไม่ดีกับตัวเอง คิดว่าตัวเองล้มเหลว หรือเป็นคนทำให้ตัวเอง </br>หรือครอบครัวผิดหวัง</h1>
+  {% elif question == "7" %}
+  <h1> ช่วงนี้สมาธิไม่ดีเวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ หรือทำงานที่ต้องใช้ความตั้งใจ</h1>
+  {% elif question == "8" %}
+  <h1> ช่วงนี้พูดหรือทำอะไรช้าจนคนอื่นมองเห็น หรือกระสับกระส่ายจนท่าน</br>อยู่ไม่นิ่งเหมือนเคย</h1>
+  {% elif question == "9" %}
+  <h1>ช่วงนี้คิดทำร้ายตนเอง หรือคิดว่าถ้าตาย ๆ ไปเสียคงจะดี</h1>
+  {% endif %}
+<form method="POST" action="/quizhandler">
+    {{ csrf_token }}
 </br>
-        <button class="btn btn-primary" type="submit"  name="score" value="4" >More</button>
-    </br>
-    </br>
-        <button class="btn btn-primary" type="submit"  name="score" value="3" >Medium</button>
-    </br>
-</br>
-        <button class="btn btn-primary" type="submit"  name="score" value="2" >less</button>
-    </br>
-</br>
-        <button class="btn btn-primary" type="submit" name="score" value="1"  >least</button>
-        </form>
-    </div>
+<button name="score" value="1" class="btn-1">น้อยที่สุด</button>
+<button name="score" value="2" class="btn-2">น้อย</button>
+<button name="score" value="3" class="btn-3">ปานกลาง</button>
+<button name="score" value="4" class="btn-4">มาก</button>
+<button name="score" value="5" class="btn-5">มากที่สุด</button>
+</form>
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="../static/particles.js"></script>
+<script src="../static/app.js"></script>
+
 </body>
 </html>

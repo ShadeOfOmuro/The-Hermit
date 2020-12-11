@@ -1,69 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>register</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="../static/sub.css">
+  <style>
+input {
+  color: #66FCF1;
+    position: absolute;
+    right: 28%;
+    top: 30%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    border : 1px solid #66FCF1;
+}
+.name-input {
+  font-size: 20px;
+  width: 45%;
+  font-family: 'Prompt', sans-serif;
+  height: 7.5%;
+}
+.age-input{
+  font-size: 20px;
+  position: absolute; 
+  transform: translate(-480% , 200%);
+  text-align: center;
+  width: 7.5%;
+  height: 7.5%;
+  font-family: 'Prompt', sans-serif;
+  
+}
 
-<!-- jQuery and JS bundle w/ Popper.js -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    
+.label-name {
+  position: absolute;
+  color: #FFFFFF;
+  right: 68%;
+  top: 26%;
+  font-size: 20px;
+  font-family: 'Prompt', sans-serif;
+}
+.label-age {
+  position: absolute;
+  color: #FFFFFF;
+  right: 71.5%;
+  font-size: 20px;
+  top: 40%;
+  font-family: 'Prompt', sans-serif;
+}
+select {
+  font-size: 14px;
+  color: #66FCF1;
+  position: absolute;
+  right: 28%;
+  top: 30%;
+  width: 4%;
+  height: 4%;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border : 1px solid #66FCF1;
+}
+option{
+  color: #000;
+}
+.text-overlay {
+  position: absolute;
+  color: #66FCF1;
+  text-align: center;
+  right:44%;
+  font-size: 60px;
+  font-family: 'Prompt', sans-serif;
+}
+  </style>
 </head>
 <body>
-    <div class="container">
-    </br>
-    <form method="POST" action="/formhandler">
-        {{ csrf_token }}
-    <div class="form-group row">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputEmail3" name="name" placeholder="Name">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Age</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputPassword3" name="age"  placeholder="Age">
-      </div>
-    </div>
-    <fieldset class="form-group">
-      <div class="row">
-        <legend class="col-form-label col-sm-2 pt-0">Sex</legend>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" name = "sex" value=0 checked>
-            <label class="form-check-label" for="gridRadios1">
-              Male
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" name="sex" value=1>
-            <label class="form-check-label" for="gridRadios2">
-              Female
-            </label>
-          </div>
-        </div>
-      </div>
-    </fieldset>
-    <div class="form-group row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck1" required>
-          <label class="form-check-label" for="gridCheck1">
-            I Agree to <a href="#">the term of service</a>
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary">Let's go</button>
-      </div>
-    </div>
+  <h2 class="text-overlay">ลงทะเบียน</h2>
+<form method="POST" action="/formhandler">
+  {{csrf_token}}
+<label class="label-name">ชื่อ-นามสกุล</label>
+<input name="name" type="text" class="name-input" required>
+<label class="label-age" >อายุ</label>
+<input type="text" name="age"class="age-input" required>
+<select name="sex" required>
+  <option name="sex" value="0">ชาย</option>
+  <option name="sex" value="1">หญิง</option>
+</select>
+<button class="start-btn" type="submit">ต่อไป</button>
 </form>
-    </div>
+<!-- particles.js container -->
+<div id="particles-js"></div>
+<!-- scripts -->
+<script src="../static/particles.js"></script>
+<script src="../static/app.js"></script>
+
 </body>
 </html>

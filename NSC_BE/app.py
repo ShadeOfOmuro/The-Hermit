@@ -108,9 +108,16 @@ def render_mindwave() :
 @app.route("/mindwave_test")
 def render_mindwave_test() :
     t = threading.Thread(target= read_mindwave_mobile.start_measure)
-    t.run()
+    t.start()
     return render_template("mindwave_test.html")
-
+@app.route("/testhandler")
+def render_handler() :
+    force_stop_test()
+    # do more stuff here
+    return redirect("/result")
+@app.route("/result")
+def render_result() :
+    return render_template("result.html")
 @app.route("/full_result")
 def render_test_result() :
     return render_template("result.html")
