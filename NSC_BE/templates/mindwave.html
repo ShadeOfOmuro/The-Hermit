@@ -7,14 +7,28 @@
   <meta name="author" content="Vincent Garreau" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" media="screen" href="../static/style.css">
+<style>
+    .container {
+        position: absolute;
+        width : 100%;
+        height: 100%;
+    }
+    .p-mindwave {
+        position: absolute;
+        top: 40%;
+        color: #FFF;
+        font-family: 'Prompt', sans-serif;
+    }
+</style>
 </head>
 <body>
-<center><h1><nobr>ยินดีต้อนรับสู่การทดสอบคลื่นสมอง</nobr></h1></center>
+<h1><nobr>การทดสอบคลื่นสมอง</nobr></h1>
 <form method="GET" action="/mindwave_test">
-
-    <center><button type="submit" id="btn" class="start-btn">เชื่อมต่อ</button></center>
-</form>  
-<center><p class="p-main"><nobr>หากท่านสวมใส่เครื่องมือเรียบร้อยแล้วให้ท่านกดปุ่นข้างล่างนี้เพื่อเชื่อมต่อกับเครื่อง</nobr></p></center>
+    <button style="z-index:999;" type="submit" id="btn" class="start-btn">เชื่อมต่อ</button>
+</form> 
+<div class="container">
+    <p class="p-mindwave">หากท่านสวมใส่เครื่องมือเรียบร้อยแล้วให้ท่านกดปุ่นข้างล่างนี้เพื่อเชื่อมต่อกับเครื่อง</p>
+</div> 
 <!-- particles.js container -->
 <div id="particles-js"></div>
 

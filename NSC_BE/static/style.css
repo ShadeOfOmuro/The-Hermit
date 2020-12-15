@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+.container {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
 body , html {
   margin: 0;
   padding: 0;
@@ -60,9 +67,7 @@ color: #FFFFFF;
 position: absolute;
 font-family: 'Prompt', sans-serif;
 font-size: 35px;
-right: 50%;
-top: 50%;
-transform: translate(50%,-150%);
+top: 40%;
 }
 .slide-top {
   transform: translate(50%,-400%);

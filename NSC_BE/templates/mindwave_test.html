@@ -16,7 +16,7 @@
   </style>
 </head>
 <body>
-<img style="position: absolute; width: 100%; height: 100;" src="">
+<img style="position: absolute; width: 100%; height: 100;" src="" id="img_slide">
 <h1 id="text-head">กำลังเริ่มต้นระบบ</h1>
 <div class="text-wrapper">
     <p id="text-sub">โปรดรอ 10 วินาที</p>
@@ -65,6 +65,19 @@ function showtext() {
 function delbg() {
     document.getElementById("particles-js").classList.add("fade-out");
     clearInterval(IntervalUID);
+    intervalUID = setinterval(showimage , 5000);
+}
+var k = 10;
+function showimage() {
+    var src_list = ["01.jpg" ,"02.jpg" ,"03.jpg" ,"04.jpg" ,"05.jpg" ,"06.jpg" ,"07.jpg" ,"08.jpg" , "09.jpg" , "10.jpg" ];
+    if(k <= 0 ) {
+        clearInterval(intervalUID);
+    }
+    else {
+        document.getElementById("img_slide").src = "../static/pics/" + src_list[k];
+        k--;
+    }
+
 }
 </script>
 </body>
