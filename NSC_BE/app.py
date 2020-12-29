@@ -1,10 +1,12 @@
 #!/usr/local/bin/python
+import flaskwebgui
 from flask import *
 import read_mindwave_mobile
 import threading
 import att_model , lowa_model , lowb_model
+import matplotlib.pyplot as plt
 app = Flask(__name__)
-
+ui = flaskwebgui.FlaskUI(app)
 class datapackMW : 
     Delta = []
     Theta = []
@@ -19,19 +21,8 @@ class datapackMW :
     Unknowdatapoint = []
     MeditationLevel = []
 
-def force_stop_test() :
-    read_mindwave_mobile.datapack.kill_code = True
-    datapackMW.Delta += read_mindwave_mobile.Delta
-    datapackMW.Theta += read_mindwave_mobile.Theta
-    datapackMW.LowAlpha += read_mindwave_mobile.LowAlpha
-    datapackMW.HighAlpha += read_mindwave_mobile.HighAlpha
-    datapackMW.LowBeta += read_mindwave_mobile.LowBeta
-    datapackMW.HighBeta += read_mindwave_mobile.HighBeta
-    datapackMW.LowGamma += read_mindwave_mobile.LowGamma
-    datapackMW.MedGamma += read_mindwave_mobile.MedGamma
-    datapackMW.AttentionLevel += read_mindwave_mobile.AttentionLevel
-    datapackMW.MeditationLevel += read_mindwave_mobile.MeditationLevel
-    print("END")
+def print_end() :
+    print('end')
 
 
 def render_measure() :
@@ -39,13 +30,6 @@ def render_measure() :
     t.run()
     return render_template("measure.html")
 
-
-def render_end() :
-    force_stop_test()
-    Att_result = att_model.predict([datapackMW.AttentionLevel[19:47]])
-    Worr_result = lowb_model.predict([datapackMW.LowBeta[19:47]])
-    Happi_result = lowa_model.predict([datapackMW.LowAlpha[19:47]])
-    return {'Att' : Att_result , 'Happ' : Happi_result , 'Worr' : Worr_result}
 
 
 class backpack :
@@ -103,14 +87,31 @@ def render_mindwave_test() :
     t = threading.Thread(target= read_mindwave_mobile.start_measure)
     t.start()
     return render_template("mindwave_test.html")
-@app.route("/testhandler")
-def render_handler() :
-    force_stop_test()
-    # do more stuff here
-    return redirect("/result")
 @app.route("/result")
 def render_result() :
-    predict_handler = render_end()
+    read_mindwave_mobile.datapack.kill_code = True
+    datapackMW.Delta += read_mindwave_mobile.Delta
+    datapackMW.Theta += read_mindwave_mobile.Theta
+    datapackMW.LowAlpha += read_mindwave_mobile.LowAlpha
+    datapackMW.HighAlpha += read_mindwave_mobile.HighAlpha
+    datapackMW.LowBeta += read_mindwave_mobile.LowBeta
+    datapackMW.HighBeta += read_mindwave_mobile.HighBeta
+    datapackMW.LowGamma += read_mindwave_mobile.LowGamma
+    datapackMW.MedGamma += read_mindwave_mobile.MedGamma
+    datapackMW.AttentionLevel += read_mindwave_mobile.AttentionLevel
+    datapackMW.MeditationLevel += read_mindwave_mobile.MeditationLevel
+    t = threading.Thread(target = print_end)
+    t.run()
+    return redirect('/result_handler')
+@app.route("/result_handler")
+def render_result_renderer() :
+    print('stopping')
+    Att_result = att_model.predict([datapackMW.AttentionLevel[19:47]])
+    Worr_result = lowb_model.predict([datapackMW.LowBeta[19:47]])
+    Happi_result = lowa_model.predict([datapackMW.LowAlpha[19:47]])
+    print({'Att' : Att_result , 'Happ' : Happi_result , 'Worr' : Worr_result})
+    print("END")
+    predict_handler = {'Att' : Att_result , 'Happ' : Happi_result , 'Worr' : Worr_result}
     MwScore = 0
     if (predict_handler['Att'] == 0) :
         MwScore+= int(0.8846*35)
@@ -135,7 +136,16 @@ def render_result() :
         case = '3'
     elif (backpack.score + MwScore <= 105 + 45) :
         case = '4'
-    link_togo = "https://chart.apis.google.com/chart?chs=300x300&cht=qr&chl=" + 'app.montfort.ac.th/the-hermit/api' + '?n=' + str(backpack.Name) + '&a=' + str(backpack.age) + '&os' + str(MwScore + backpack.score) + '&ms=' + str(MwScore) + '&c=' + str(backpack.score) + '&s=' + case + '&hs=' + str(predict_handler['Happ']) + '&ws=' + str(predict_handler['Worr']) + '&atts=' + str(predict_handler['Att'])
-    return render_template("result.html" , link_togo = link_togo , result = case)
-
-app.run(debug=True)
+    overallscore = MwScore + backpack.score
+    backpack.name.replace(" " , '%20')
+    link_togo = 'http://app.montfort.ac.th/the-hermit/api' + '?n=' 
+    link_togo +=  str(backpack.name) + '&a=' + str(backpack.age) + '&os=' + str(overallscore) 
+    link_togo +=  '&ms=' + str(MwScore) + '&c=' 
+    link_togo +=  str(backpack.score) + '&s=' + str(case) 
+    link_togo += '&hs=' + str(predict_handler['Happ']) + '&ws=' 
+    link_togo += str(predict_handler['Worr']) + '&atts=' + str(predict_handler['Att'])
+    print(link_togo)
+    print(backpack.name , backpack.age , MwScore , backpack.score , predict_handler['Happ'] , predict_handler['Worr'] , predict_handler['Att'] , case)
+    return render_template("result.html" , link_togo = link_togo , result =  case)
+app.run()
+ui.run()
