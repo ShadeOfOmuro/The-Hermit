@@ -2,6 +2,7 @@
 from flask import *
 import read_mindwave_mobile
 import threading
+import att_model , lowa_model , lowb_model
 app = Flask(__name__)
 
 class datapackMW : 
@@ -41,18 +42,10 @@ def render_measure() :
 
 def render_end() :
     force_stop_test()
-    # plt.plot(datapackMW.Delta)
-    # plt.plot(datapackMW.Theta)
-    # plt.plot(datapackMW.LowAlpha)
-    # plt.plot(datapackMW.HighAlpha)
-    # plt.plot(datapackMW.LowBeta)
-    # plt.plot(datapackMW.HighBeta)
-    # plt.plot(datapackMW.LowGamma)
-    # plt.plot(datapackMW.MedGamma)
-    # plt.plot(datapackMW.AttentionLevel)
-    # plt.plot(datapackMW.MeditationLevel)
-    # plt.show()
-    return Response(str())
+    Att_result = att_model.predict([datapackMW.AttentionLevel[19:47]])
+    Worr_result = lowb_model.predict([datapackMW.LowBeta[19:47]])
+    Happi_result = lowa_model.predict([datapackMW.LowAlpha[19:47]])
+    return {'Att' : Att_result , 'Happ' : Happi_result , 'Worr' : Worr_result}
 
 
 class backpack :
@@ -117,9 +110,32 @@ def render_handler() :
     return redirect("/result")
 @app.route("/result")
 def render_result() :
-    return render_template("result.html")
-@app.route("/full_result")
-def render_test_result() :
-    return render_template("result.html")
+    predict_handler = render_end()
+    MwScore = 0
+    if (predict_handler['Att'] == 0) :
+        MwScore+= int(0.8846*35)
+    else :
+        MwScore += 0
+    if (predict_handler['Happ'] == 0) :
+        MwScore+= int(0.8823*35)
+    else :
+        MwScore += 0
+    if (predict_handler['Worr'] == 0) :
+        MwScore+= int(0.8214*35)
+    else :
+        MwScore += 0
+    case = str()
+    if(backpack.score + MwScore <= 21 + 9) :
+        case = '0'
+    elif (backpack.score + MwScore <= 42 + 18) :
+        case = '1'
+    elif (backpack.score + MwScore <= 63 + 27) :
+        case = '2'
+    elif (backpack.score + MwScore <= 84 + 36) :
+        case = '3'
+    elif (backpack.score + MwScore <= 105 + 45) :
+        case = '4'
+    link_togo = "https://chart.apis.google.com/chart?chs=300x300&cht=qr&chl=" + 'app.montfort.ac.th/the-hermit/api' + '?n=' + str(backpack.Name) + '&a=' + str(backpack.age) + '&os' + str(MwScore + backpack.score) + '&ms=' + str(MwScore) + '&c=' + str(backpack.score) + '&s=' + case + '&hs=' + str(predict_handler['Happ']) + '&ws=' + str(predict_handler['Worr']) + '&atts=' + str(predict_handler['Att'])
+    return render_template("result.html" , link_togo = link_togo , result = case)
 
 app.run(debug=True)
