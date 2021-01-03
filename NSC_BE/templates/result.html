@@ -1,14 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The result page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+    @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+    p {
+        font-family: 'Prompt', sans-serif;
+    }
+    #circlebar {
+        font-family: 'Prompt', sans-serif;
+        margin-top : 180px;
+        text-align: center;
+        color: #fff;
+    }
+    #circlebar .round {
+        min-height: 255px;
+        margin-top: 30px;
+        position: relative;
+        margin-bottom: 20px;
+    }
+    #circlebar .round strong {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        transform: translate(-50%);
+        font-size: 40px;
+        color: #66fcf1;
+        font-weight: 100;
+        
+    }
+    strong {
+        opacity: 0;
+        transition-delay: 20s;
+    }
+    #circlebar span {
+        display: block;
+        color: #fff;
+        font-size: 17px;
+        margin-top: 10px;
+    }
+    #circlebar span i {
+       color:#fff;
+       font-size: 22px;
+       margin-right: 7px; 
+    }
+    section button:hover {
+        background-color: #66fcf1;
+        border: none;
+        transition: 1000ms;
+    }
+    section button:hover a{
+        color: black;
+    }
+    section button {
+        background-color: #1f2833;
+        color: #fff;
+        border: 1px solid #fff;
+        margin-top: 150px;
+    }
+    .btn {
+        background-color: #1f2833;
+        color: #fff;
+        border: 1px solid #fff;
+    }
+    body {
+        background-color: #1f2833;
+        font-family: 'Prompt', sans-serif;
+    }
+    .fade-in {
+        opacity: 1;
+        transition: 10s;
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+    .font {
+        font-family: 'Prompt', sans-serif;
+    }
+
+</style>
 </head>
 <body>
-    <button class="btn btn-success" ><a href={{link_togo}}>ไปเลย</a></button>
+    <section id="circlebar">
+        <h1 class="font">สรุปผลการทดสอบ</h1>
+        <p class="font">
+            ท่านสามารถดูผลการทดสอบฉบับเต็มได้โดยการกดปุ่มข้างล่างนี้
+        </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="round" data-value={{ cp }} data-size="200" data-thickness="12">
+                        <strong></strong>
+                        <span class="font">
+                            <!-- <i class="fa fa-html5"></i> -->
+                            ส่วนเลือกตอบ
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="round" data-value={{ mp }} data-size="200" data-thickness="12">
+                        <strong></strong>
+                        <span class="font">
+                            <!-- <i class="fa fa-css3"></i> -->
+                            ส่วนคลื่นสมอง
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="round" data-value={{ op }} data-size="200" data-thickness="12">
+                        <strong></strong>
+                        <span class="font">
+                            <!-- <i class="fa fa-jsfiddle"></i> -->
+                            คะแนนรวม
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+            <p>คุณมีความเสี่ยงในการเป็นโรคซึมเศร้าในระดับ<strong>
+                {% if status == '0' %}
+                <span>น้อยมาก</span>
+                {% elif status == '1' %}
+                <span>น้อย</span>
+                {% elif status == '2' %}
+                <span>ปานกลาง</span>
+                {% elif status == '3' %}
+                <span>มาก</span>
+                {% elif status == '4' %}
+                <span>มากที่สุด</span>
+                {% endif %}
+              </strong> </p>
+        </div>
+        
+        <button class="btn" style="font-size: 20px;"><a href={{link_togo}}>ดูผลการทดสอบฉบับเต็ม</a></button>
+    </section>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.0/circle-progress.min.js"></script>
+<script>
+    function Circlle(el) {
+        $(el).circleProgress({fill : {color : '#ff5c5c'}})
+        .on("circle-animation-progress" , function(event , progress , stepValue) 
+        {
+            $(this).find('strong').text(String(stepValue.toFixed(2)*100) + '%');
+        } 
+        );
+    }
+    
+    Circlle('.round');
+    $('strong').addClass('fade-in');            
+</script>
 </html>

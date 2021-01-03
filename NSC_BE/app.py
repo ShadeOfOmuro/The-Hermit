@@ -139,13 +139,16 @@ def render_result_renderer() :
     overallscore = MwScore + backpack.score
     backpack.name.replace(" " , '%20')
     link_togo = 'http://app.montfort.ac.th/the-hermit/api' + '?n=' 
-    link_togo +=  str(backpack.name) + '&a=' + str(backpack.age) + '&os=' + str(overallscore) 
+    link_togo +=  str(backpack.name.replace(' ','%20')) + '&a=' + str(backpack.age) + '&os=' + str(overallscore) 
     link_togo +=  '&ms=' + str(MwScore) + '&c=' 
     link_togo +=  str(backpack.score) + '&s=' + str(case) 
     link_togo += '&hs=' + str(predict_handler['Happ']) + '&ws=' 
     link_togo += str(predict_handler['Worr']) + '&atts=' + str(predict_handler['Att'])
     print(link_togo)
     print(backpack.name , backpack.age , MwScore , backpack.score , predict_handler['Happ'] , predict_handler['Worr'] , predict_handler['Att'] , case)
-    return render_template("result.html" , link_togo = link_togo , result =  case)
+    percent_choice = int(backpack.score/45*100)/100
+    percent_mindwave = int(MwScore/105 * 100)/100
+    percent_all = int(overallscore/150*100)/100
+    return render_template("result.html" , link_togo = link_togo , status =  case , cp = percent_choice , mp = percent_mindwave , op = percent_all)
 app.run()
 ui.run()
