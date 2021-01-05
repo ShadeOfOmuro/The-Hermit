@@ -7,6 +7,7 @@
   <meta name="author" content="Vincent Garreau" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" media="screen" href="../static/style.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <style>
     .container {
         position: absolute;
@@ -24,10 +25,10 @@
 <body>
 <h1><nobr>การทดสอบคลื่นสมอง</nobr></h1>
 <form method="GET" action="/mindwave_test">
-    <button style="z-index:999;" type="submit" id="btn" class="start-btn">เชื่อมต่อ</button>
+    <button onclick="df()" style="z-index:999;" type="submit" id="btn" class="start-btn">เชื่อมต่อ</button>
 </form> 
 <div class="container">
-    <p class="p-mindwave">หากท่านสวมใส่เครื่องมือเรียบร้อยแล้วให้ท่านกดปุ่นข้างล่างนี้เพื่อเชื่อมต่อกับเครื่อง</p>
+    <p id="text-wait" class="p-mindwave">หากท่านสวมใส่เครื่องมือเรียบร้อยแล้วให้ท่านกดปุ่นข้างล่างนี้เพื่อเชื่อมต่อกับเครื่อง</p>
 </div> 
 <!-- particles.js container -->
 <div id="particles-js"></div>
@@ -46,7 +47,11 @@
     }
 </style>
 <script>
-
+    function df() {
+        $("#text-wait").html("โปรดรอสักครู่ขณะทำการเชื่อมต่อ");
+        $("#btn").css('display', 'none');
+        window.location = "http://127.0.0.1:50000/mindwave_test";
+    }
 </script>
 </body>
 </html>

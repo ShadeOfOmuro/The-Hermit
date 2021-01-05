@@ -62,5 +62,6 @@ def start_measure() :
       print((textwrap.dedent("""\
          Exiting because the program could not connect
          to the Mindwave Mobile device.""").replace("\n", " ")))
+      raise Exception("cannot connect to bluetooth")
 
 
