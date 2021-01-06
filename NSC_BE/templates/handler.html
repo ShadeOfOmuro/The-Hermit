@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: auto;
+            border: 0px;
+            overflow: hidden;
+            
+        }
+    </style>
+</head>
+<body scrolling="no">
+    <iframe   scrolling="no" src="http://127.0.0.1:5000/slide_txt" id="myiframe" style="border: 0px; margin:0; padding:0; width: 1920px; height: 1080px ; overflow: hidden;" scrolling="no"></iframe>
+</body>
+<script>
+    setTimeout(()=> {
+        document.getElementById('myiframe').src ="http://127.0.0.1:5000/slideshow"
+    } , 40000); 
+    setTimeout(()=> {
+        location.href = "https://montfort.ac.th";
+    } , 62000); 
+    let music = new Audio('../static/usr.mp3');
+    music.play();
+</script>
+</html>

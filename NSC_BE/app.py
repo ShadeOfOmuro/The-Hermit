@@ -85,11 +85,18 @@ def render_mindwave() :
 @app.route("/mindwave_test")
 def render_mindwave_test() :
     t = threading.Thread(target= read_mindwave_mobile.start_measure)
-    try :
-        t.run()
-    except :
-        return render_template("error.html")
-    return render_template("mindwave_test.html")
+    t.start();
+    # try :
+    #     t.run()
+    # except :
+    #     return render_template("error.html")
+    return render_template("handler.html")
+@app.route('/slide_txt')
+def reds() :
+    return render_template('mindwave_test.html')
+@app.route('/slideshow')
+def redss() :
+    return render_template('mindwave_test2.html')
 @app.route("/result")
 def render_result() :
     read_mindwave_mobile.datapack.kill_code = True
