@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan 2</title>
+    <link rel="stylesheet" media="screen" href="../static/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">  
+</head>
+<body>
+    <center><p id="countdownnum" style="position:fixed; justify-content: center; align-self: center; right: 38%; top: 40%;color: #fff;font-size: 60px;font-family: 'kanit', sans-serif; ">เหลืออีก 120 วินาที</p></center>
+    <!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="../static/particles.js"></script>
+<script src="../static/app.js"></script>
+</body>
+<script>
+    var i = 120;
+    obj = document.getElementById('countdownnum');
+    IntervalUID = setInterval(docountdown,1000)
+    function docountdown() {
+        i-=1;
+        if (i <= 0 ){
+            clearInterval(IntervalUID);
+            location.replace("http://127.0.0.1:5000/result");
+        }
+        obj.innerHTML = "เหลืออีก " + String(i) + " วินาที";
+    }
+</script>
+</html>

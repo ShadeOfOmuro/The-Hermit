@@ -81,16 +81,24 @@ def redirect_to_quiz() :
         return redirect("/choicequiz")
 @app.route("/mindwave")
 def render_mindwave() :
-    return render_template("mindwave.html")
+    return render_template("choose.html")
 @app.route("/mindwave_test")
 def render_mindwave_test() :
     t = threading.Thread(target= read_mindwave_mobile.start_measure)
-    t.start();
-    # try :
-    #     t.run()
-    # except :
-    #     return render_template("error.html")
+    try :
+        t.run()
+    except :
+        return render_template("error.html")
     return render_template("handler.html")
+
+@app.route("/mindwave_test_case2")
+def render_mindwave_test2() :
+    t = threading.Thread(target= read_mindwave_mobile.start_measure)
+    try :
+        t.run()
+    except :
+        return render_template("error.html")
+    return render_template("mindwave_test_plan2.html")
 @app.route('/slide_txt')
 def reds() :
     return render_template('mindwave_test.html')
