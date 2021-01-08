@@ -8,7 +8,10 @@
 }
 
 body{
-  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,9 +19,10 @@ body{
 }
 
 .img-slider{
+  padding-top: -5px;
   position: relative;
-  width: 800px;
-  height: 650px;
+  width: 100%;
+  height: auto;
   margin: 10px;
   background: #1F2833; 
   animation: animate 2s forwards;
@@ -36,13 +40,12 @@ body{
   z-index: 1;
   position: absolute;
   width: 100%;
-  clip-path: circle(0% at 0 50%);
+  opacity: 0;
 }
 
 .img-slider .slide.active{
-  clip-path: circle(150% at 0 50%);
-  transition: 2s;
-  transition-property: clip-path;
+  opacity: 1;
+  transition: 3s;
 }
 
 .img-slider .slide img{
