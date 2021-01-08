@@ -8,45 +8,108 @@
     <link rel="stylesheet" href="../static/slideshow.css">
     
   </head>
-  <body>
+  <body scrolling="no" style="overflow: hidden;">
 
-    <div class="img-slider">
+    <div class="img-slider" scrolling="no">
       <div class="slide active">
-        <img src="C:\Users\kotat\Desktop\picture\nsc 01.png" alt="">
+        <img src="../static/1.png" alt="">
         <div class="info">
-          <h2>first</h2>
         </div>
       </div>
       <div class="slide">
-        <img src="C:\Users\kotat\Desktop\picture\nsc 05.png" alt="">
+        <img src="../static/2.png" alt="">
         <div class="info">
-          <h2>Slide 02</h2>
         </div>
       </div>
       <div class="slide">
-        <img src="3.jpg" alt="">
+        <img src="../static/3.png" alt="">
         <div class="info">
-          <h2>Slide 03</h2>
         </div>
       </div>
       <div class="slide">
-        <img src="4.jpg" alt="">
+        <img src="../static/4.png" alt="">
         <div class="info">
-          <h2>Slide 04</h2>
         </div>
       </div>
       <div class="slide">
-        <img src="5.jpg" alt="">
+        <img src="../static/5.png" alt="">
         <div class="info">
-          <h2>Slide 05</h2>
         </div>
       </div>
-      <div class="navigation">
-        <div class="btn active"></div>
-        <div class="btn"></div>
-        <div class="btn"></div>
-        <div class="btn"></div>
-        <div class="btn"></div>
+      <div class="slide">
+        <img src="../static/6.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/7.jpg" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/8.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/9.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/10.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/11.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/12.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/13.jpg" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/14.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/15.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/16.png" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/17.jpg" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/18.jpg" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/19.jpg" alt="">
+        <div class="info">
+        </div>
+      </div>
+      <div class="slide">
+        <img src="../static/20.jpg" alt="">
+        <div class="info">
+        </div>
       </div>
     </div>
 
@@ -55,26 +118,6 @@
     var btns = document.querySelectorAll('.btn');
     let currentSlide = 1;
 
-    // Javascript for image slider manual navigation
-    var manualNav = function(manual){
-      slides.forEach((slide) => {
-        slide.classList.remove('active');
-
-        btns.forEach((btn) => {
-          btn.classList.remove('active');
-        });
-      });
-
-      slides[manual].classList.add('active');
-      btns[manual].classList.add('active');
-    }
-
-    btns.forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        manualNav(i);
-        currentSlide = i;
-      });
-    });
 
     // Javascript for image slider autoplay navigation
         var repeat = function(activeClass){
@@ -88,7 +131,6 @@
               });
 
             slides[i].classList.add('active');
-            btns[i].classList.add('active');
             i++;
 
             if(slides.length == i){
