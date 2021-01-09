@@ -14,7 +14,11 @@ body , html {
   font-family: 'kanit', sans-serif;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }
 #particles-js {
   height: 100%;
@@ -27,18 +31,20 @@ form {
   width: auto;
 }
 h1 {
-    position: absolute;
+    position: fixed;
     color: #66FCF1;
     font-size: 50px;
-    padding-left: 2%;
+    text-align: center;
+    right: 50%;
+    transform: translateX(50%);
 }
 button {
   font-family: 'kanit', sans-serif;
   position: relative;
-  transform: translate(300%,500%);
-  width:300%;
-  height: 50%;
+  width:250px;
+  height: 100px;
   align-self: center;
+  left: -5%;
 }
 .btn-1:hover {
   background-color: aquamarine;
