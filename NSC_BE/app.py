@@ -1,4 +1,5 @@
 #!/usr/local/bin/python
+import sys
 import flaskwebgui
 from flask import *
 import read_mindwave_mobile
@@ -121,6 +122,9 @@ def render_result() :
     t = threading.Thread(target = print_end)
     t.run()
     return redirect('/result_handler')
+@app.route("/exit_app")
+def exitapp() :
+    sys.exit("Cant connect to the bluetooth")
 @app.route("/result_handler")
 def render_result_renderer() :
     print('stopping')
@@ -168,5 +172,5 @@ def render_result_renderer() :
     percent_mindwave = int(MwScore/105 * 100)/100
     percent_all = int(overallscore/150*100)/100
     return render_template("result.html" , link_togo = link_togo , status =  case , cp = percent_choice , mp = percent_mindwave , op = percent_all)
-app.run()
-# ui.run()
+# app.run(debug=True)
+ui.run()
