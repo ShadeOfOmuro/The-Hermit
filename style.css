@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+.container {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+body , html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+#particles-js {
+  height: 100%;
+  background-color: #1F2833; 
+}
+.start-btn {
+  position : fixed;
+  top: 50%;
+  right: 50%;
+  height: 12%;
+  width: 19.5%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #FFFFFF;
+  border: 3px solid #66FCF1;
+  transform: translate(44% , 100%);
+  font-size: 30px;
+  font-family: 'Prompt', sans-serif;
+
+}
+.start-btn:active {
+  position : fixed;
+  top: 50%;
+  right: 50%;
+  height: 12%;
+  width: 19.5%;
+  border: none;
+  background-color: #000;
+  color: #FFFFFF;
+  border: 3px solid #66FCF1;
+  transform: translate(44% , 100%);
+  font-size: 30px;
+  font-family: 'Prompt', sans-serif;
+  opacity: .4;
+
+}
+.start-btn:hover {
+  background-color: #66FCF1;
+  color: #000000;
+  transition: 700ms;
+}
+h1 {
+  position : absolute;
+  color: #66FCF1;
+  font-family: 'Prompt', sans-serif;
+  position: fixed;
+  right: 50%;
+  top: 50%;
+  font-size: 120px;
+  transform: translate(50% , -200%);
+
+}
+.p-main{
+color: #FFFFFF;
+position: absolute;
+font-family: 'Prompt', sans-serif;
+font-size: 35px;
+top: 40%;
+}
+.slide-top {
+  transform: translate(50%,-400%);
+}
+.reduce-font{
+  font-size: 90px;
+}
+.scroll-text-wrapper {
+  color: #FFFFFF;
+  font-family: 'Prompt', sans-serif;
+  width: 80%;
+  position: absolute;
+  height: 55%;
+  background-color: rgba(0,0,0,0.1);
+  border: none;
+  border: 3px solid #66FCF1;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50% , -57%);
+  overflow:scroll;
+}
+div p {
+  margin-left : 10px;
+  width: 98%;
+  position: relative;
+  top:50px;
+  left: 10px;
+  font-size: 32px;
+
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  #66FCF1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:  #66fcf2b7;
+}
+::-webkit-scrollbar-corner {
+  background:   rgba(0,0,0,0);
+}
+.slide-down {
+  transform: translate(50%,250%);
+}
+a {
+  color: #FFFFFF;
+
+}
+a:hover {
+  color: #66FCF1;
+  transition: 1000ms;
+}
+.alerty {
+  color: #f93a63;
+}
