@@ -87,7 +87,7 @@ def render_mindwave() :
 def render_mindwave_test() :
     t = threading.Thread(target= read_mindwave_mobile.start_measure)
     try :
-        t.run()
+        t.start()
     except :
         return render_template("error.html")
     return render_template("handler.html")
@@ -96,7 +96,7 @@ def render_mindwave_test() :
 def render_mindwave_test2() :
     t = threading.Thread(target= read_mindwave_mobile.start_measure)
     try :
-        t.run()
+        t.start()
     except :
         return render_template("error.html")
     return render_template("mindwave_test_plan2.html")
@@ -172,5 +172,4 @@ def render_result_renderer() :
     percent_mindwave = int(MwScore/105 * 100)/100
     percent_all = int(overallscore/150*100)/100
     return render_template("result.html" , link_togo = link_togo , status =  case , cp = percent_choice , mp = percent_mindwave , op = percent_all)
-# app.run(debug=True)
-ui.run()
+app.run(debug=True)
